@@ -1,5 +1,9 @@
+import shapesRepository from "../repositories/shapeRepository";
+
 async function getAllShapes() {
-  return "ok";
+  const shapes = await shapesRepository.findAllShapes();
+
+  return shapes;
 }
 
 const shapesService = {

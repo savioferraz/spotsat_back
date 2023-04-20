@@ -2,12 +2,18 @@ import express, { Express } from "express";
 import cors from "cors";
 import { loadEnv } from "./config/envs";
 import { connectDb, disconnectDb } from "./database/db";
+import { shapeRoutes, userRoutes } from "./routers";
 
 loadEnv();
 
 const app = express();
 
-app.use(cors()).use(express.json()).use();
+app
+  .use(cors())
+  .use(express.json())
+  .get("/health", (_req, res) => res.status(200).send("OK!"))
+  .use("/users", userRoutes)
+  .use("/shapes", shapeRoutes);
 
 export async function init(): Promise<Express> {
   connectDb();

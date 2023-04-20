@@ -5,6 +5,17 @@
   "main": "index.js",
   "homepage": "https://github.com/savioferraz/spotsat_back#readme",
   "scripts": {
+    "build": "ttsc -p tsconfig.build.json",
+    "db:dump": "sudo su -c 'pg_dump spotsat --inserts --no-owner' postgres > dump.sql",
+    "dev:load-envs": "dotenv -e .env.development",
+    "lint": "eslint .",
+    "lint:staged": "lint-staged",
+    "prisma:create-schema": "npm run dev:load-envs prisma db pull",
+    "prisma:generate-client": "npx prisma generate",
+    "prisma:migration-generate": "npm run dev:load-envs prisma migrate dev",
+    "prisma:migration-run": "prisma migrate deploy",
+    "prisma:seed": "ts-node prisma/seed.ts",
+    "start": "npx nodemon src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

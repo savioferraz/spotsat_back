@@ -1,7 +1,8 @@
-import { prisma } from "@/database/db";
+import { prisma } from "../database/db";
 
 async function findAllShapes() {
-  return "ok";
+  const polygons = prisma.polygons.findMany();
+  return polygons;
 }
 
 const shapesRepository = { findAllShapes };
