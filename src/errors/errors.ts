@@ -28,4 +28,11 @@ function unauthorizedError(): ErrorType {
   };
 }
 
-export { invalidDataError, sameEmailError, invalidLoginError, unauthorizedError };
+function notFoundError(): ErrorType {
+  return {
+    name: "notFoundError",
+    message: "Polígono não encontrado",
+  };
+}
+
+export { invalidDataError, sameEmailError, invalidLoginError, unauthorizedError, notFoundError };

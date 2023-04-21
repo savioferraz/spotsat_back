@@ -4,7 +4,8 @@ import { Router } from "express";
 
 const userRoutes = Router();
 
-userRoutes.post("/create", createAccountValidation, userController.createUser);
-userRoutes.post("/login", loginValidation, userController.login);
+userRoutes
+  .post("/create", createAccountValidation, userController.createUser)
+  .post("/login", loginValidation, userController.login);
 
 export default userRoutes;

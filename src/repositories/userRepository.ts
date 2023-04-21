@@ -1,7 +1,7 @@
 import { prisma } from "../database/db";
 
 async function findByEmail(email: string) {
-  const result = prisma.users.findFirst({
+  const result = await prisma.users.findFirst({
     where: {
       email: email,
     },
@@ -11,7 +11,7 @@ async function findByEmail(email: string) {
 }
 
 async function createUser(name: string, email: string, password: string) {
-  return prisma.users.create({ data: { name, email, password } });
+  return await prisma.users.create({ data: { name, email, password } });
 }
 
 const userRepository = { findByEmail, createUser };
