@@ -1,6 +1,5 @@
 import { invalidLoginError, sameEmailError } from "../errors/errors";
 import userRepository from "../repositories/userRepository";
-import { Prisma } from "@prisma/client";
 import bcrypt from "bcrypt";
 import { v4 as uuidv4 } from "uuid";
 

@@ -15,11 +15,18 @@ async function createUser(name: string, email: string, password: string) {
 }
 
 async function createSeassion(token: string, userId: number) {
-  const result = prisma.sessions.upsert({
-    where: {},
-    update: { token: token },
-    create: { userId: userId, token: token },
+  const oldSession = prisma.sessions.findFirst({ where: { userId: userId } });
+
+  await prisma.sessions.delete({ where: { id: (await oldSession).id } });
+
+  const result = await prisma.sessions.create({
+    data: {
+      userId,
+      token,
+    },
   });
+
+  console.log(result);
 
   return result;
 }

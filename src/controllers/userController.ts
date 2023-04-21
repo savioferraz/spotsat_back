@@ -3,8 +3,6 @@ import { Request, Response } from "express";
 import httpStatus from "http-status";
 
 export async function createUser(req: Request, res: Response) {
-  console.log("caiu aqui");
-
   try {
     const { name, email, password } = req.body;
 

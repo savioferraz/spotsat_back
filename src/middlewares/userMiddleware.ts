@@ -3,7 +3,6 @@ import { loginSchema, createAccountSchema } from "../schemas/userSchemas";
 import { NextFunction, Request, Response } from "express";
 
 async function createAccountValidation(req: Request, res: Response, next: NextFunction) {
-  console.log("caiu aqui");
   const validation = createAccountSchema.validate(req.body, {
     abortEarly: false,
   });
