@@ -17,7 +17,7 @@ model polygons {
 
 model sessions {
   id     Int    @id @default(autoincrement())
-  userId Int
+  userId Int    @unique(map: "sessions_un")
   token  String @unique @db.VarChar(255)
   users  users  @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }
@@ -28,5 +28,5 @@ model users {
   email    String     @unique @db.VarChar(255)
   password String     @db.VarChar(64)
   polygons polygons[]
-  sessions sessions[]
+  sessions sessions?
 }

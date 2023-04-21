@@ -2,7 +2,8 @@ import express, { Express } from "express";
 import cors from "cors";
 import { loadEnv } from "./config/envs";
 import { connectDb, disconnectDb } from "./database/db";
-import { shapeRoutes, userRoutes } from "./routers";
+import shapeRoutes from "./routers/shapeRoutes";
+import userRoutes from "./routers/userRoutes";
 
 loadEnv();
 

@@ -1,8 +1,8 @@
-import { getAllShapes } from "../controllers";
+import { getAllShapes } from "../controllers/shapesController";
 import { Router } from "express";
 
 const shapeRoutes = Router();
 
 shapeRoutes.get("/", getAllShapes);
 
-export { shapeRoutes };
+export default shapeRoutes;
