@@ -1,3 +1,4 @@
+import authRepository from "../repositories/authRepository";
 import { invalidLoginError, sameEmailError } from "../errors/errors";
 import userRepository from "../repositories/userRepository";
 import bcrypt from "bcrypt";
@@ -25,7 +26,7 @@ async function loginService(email: string, password: string) {
 
   const token = uuidv4();
 
-  await userRepository.createSeassion(token, user.id);
+  await authRepository.createSeassion(token, user.id);
 }
 
 const userService = {

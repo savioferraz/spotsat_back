@@ -21,4 +21,11 @@ function invalidLoginError(): ErrorType {
   };
 }
 
-export { invalidDataError, sameEmailError, invalidLoginError };
+function unauthorizedError(): ErrorType {
+  return {
+    name: "unauthorizedError",
+    message: "Você não tem permissão",
+  };
+}
+
+export { invalidDataError, sameEmailError, invalidLoginError, unauthorizedError };

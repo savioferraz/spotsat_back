@@ -32,6 +32,6 @@ export async function login(req: Request, res: Response) {
       return res.status(httpStatus.UNAUTHORIZED).send(error);
     }
 
-    return res.status(httpStatus.BAD_REQUEST).send(error);
+    return res.status(httpStatus.INTERNAL_SERVER_ERROR).send(error);
   }
 }

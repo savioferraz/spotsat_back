@@ -14,23 +14,6 @@ async function createUser(name: string, email: string, password: string) {
   return prisma.users.create({ data: { name, email, password } });
 }
 
-async function createSeassion(token: string, userId: number) {
-  const oldSession = prisma.sessions.findFirst({ where: { userId: userId } });
-
-  await prisma.sessions.delete({ where: { id: (await oldSession).id } });
-
-  const result = await prisma.sessions.create({
-    data: {
-      userId,
-      token,
-    },
-  });
-
-  console.log(result);
-
-  return result;
-}
-
-const userRepository = { findByEmail, createUser, createSeassion };
+const userRepository = { findByEmail, createUser };
 
 export default userRepository;

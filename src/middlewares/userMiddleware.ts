@@ -13,7 +13,6 @@ async function createAccountValidation(req: Request, res: Response, next: NextFu
     throw invalidDataError();
   }
 
-  res.locals.body = req.body;
   next();
 }
 
@@ -28,7 +27,6 @@ async function loginValidation(req: Request, res: Response, next: NextFunction) 
     throw invalidDataError();
   }
 
-  res.locals.body = req.body;
   next();
 }
 
