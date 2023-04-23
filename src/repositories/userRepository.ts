@@ -6,7 +6,6 @@ async function findByEmail(email: string) {
       email: email,
     },
   });
-
   return result;
 }
 

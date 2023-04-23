@@ -8,10 +8,10 @@ datasource db {
 }
 
 model polygons {
-  id      Int    @id @default(autoincrement())
+  id      Int    @id(map: "polygons_pk") @default(autoincrement())
   userId  Int
-  name    String @db.VarChar(255)
-  geodata String
+  name    String
+  geodata Json
   users   users  @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }
 

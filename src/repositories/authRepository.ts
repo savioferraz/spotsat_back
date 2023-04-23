@@ -1,10 +1,24 @@
 import { prisma } from "../database/db";
 
-async function createSeassion(token: string, userId: number) {
+async function refreshSession(token: string, userId: number) {
   const oldSession = prisma.sessions.findFirst({ where: { userId: userId } });
 
-  await prisma.sessions.delete({ where: { id: (await oldSession).id } });
+  if (oldSession) {
+    await prisma.sessions.delete({ where: { id: (await oldSession).id } });
+  }
+  console.log(oldSession);
 
+  const result = await prisma.sessions.create({
+    data: {
+      userId,
+      token,
+    },
+  });
+
+  return result;
+}
+
+async function createNewSession(token: string, userId: number) {
   const result = await prisma.sessions.create({
     data: {
       userId,
@@ -21,6 +35,6 @@ async function findSessionByToken(token: string) {
   return result;
 }
 
-const authRepository = { createSeassion, findSessionByToken };
+const authRepository = { createNewSession, refreshSession, findSessionByToken };
 
 export default authRepository;

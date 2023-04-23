@@ -13,7 +13,13 @@ async function createUser(name: string, email: string, password: string) {
 
   const hashPassword = await bcrypt.hash(password, 10);
 
-  await userRepository.createUser(name, email, hashPassword);
+  const newUser = await userRepository.createUser(name, email, hashPassword);
+
+  const token = uuidv4();
+
+  const session = await authRepository.createNewSession(token, newUser.id);
+
+  return session;
 }
 
 async function loginService(email: string, password: string) {
@@ -26,7 +32,9 @@ async function loginService(email: string, password: string) {
 
   const token = uuidv4();
 
-  await authRepository.createSeassion(token, user.id);
+  const session = await authRepository.refreshSession(token, user.id);
+
+  return session;
 }
 
 const userService = {
