@@ -10,7 +10,7 @@ async function createAccountValidation(req: Request, res: Response, next: NextFu
   if (validation.error) {
     const errors = validation.error.details.map((error) => error.message);
     res.status(422).send({ message: errors });
-    throw invalidDataError();
+    return invalidDataError();
   }
 
   next();
@@ -24,7 +24,7 @@ async function loginValidation(req: Request, res: Response, next: NextFunction) 
   if (validation.error) {
     const errors = validation.error.details.map((error) => error.message);
     res.status(422).send({ message: errors });
-    throw invalidDataError();
+    return invalidDataError();
   }
 
   next();

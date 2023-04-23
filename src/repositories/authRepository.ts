@@ -6,7 +6,6 @@ async function refreshSession(token: string, userId: number) {
   if (oldSession) {
     await prisma.sessions.delete({ where: { id: (await oldSession).id } });
   }
-  console.log(oldSession);
 
   const result = await prisma.sessions.create({
     data: {

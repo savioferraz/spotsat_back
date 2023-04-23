@@ -7,7 +7,7 @@ import { tokenSchema } from "../schemas/authSchema";
 async function authMiddleware(req: Request, res: Response, next: NextFunction) {
   if (!req.headers.authorization) {
     res.sendStatus(401);
-    throw unauthorizedError();
+    return unauthorizedError();
   }
 
   const token = req.headers.authorization?.replace("Bearer ", "");
@@ -17,14 +17,14 @@ async function authMiddleware(req: Request, res: Response, next: NextFunction) {
   if (validation.error) {
     const errors = validation.error.details.map((error) => error.message);
     res.status(422).send({ message: errors });
-    throw unauthorizedError();
+    return unauthorizedError();
   }
 
   const checkToken = await authRepository.findSessionByToken(token);
 
   if (!checkToken) {
     res.sendStatus(401);
-    throw unauthorizedError();
+    return unauthorizedError();
   }
 
   next();
