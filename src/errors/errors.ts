@@ -2,35 +2,35 @@ import { ErrorType } from "./protocol";
 
 function invalidDataError(): ErrorType {
   return {
-    name: "invalidDataError",
+    type: "invalidDataError",
     message: "Dados de entrada inválidos",
   };
 }
 
 function sameEmailError(): ErrorType {
   return {
-    name: "sameEmailError",
+    type: "sameEmailError",
     message: "Esse e-mail já está em uso",
   };
 }
 
 function invalidLoginError(): ErrorType {
   return {
-    name: "invalidLoginError",
+    type: "invalidLoginError",
     message: "Email ou senha incorretos",
   };
 }
 
 function unauthorizedError(): ErrorType {
   return {
-    name: "unauthorizedError",
+    type: "unauthorizedError",
     message: "Você não tem permissão",
   };
 }
 
 function notFoundError(): ErrorType {
   return {
-    name: "notFoundError",
+    type: "notFoundError",
     message: "Polígono não encontrado",
   };
 }
