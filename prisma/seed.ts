@@ -1,4 +1,5 @@
 import { PrismaClient } from "@prisma/client";
+import bcrypt from "bcrypt";
 
 const prisma = new PrismaClient();
 
@@ -13,12 +14,14 @@ async function clearDb() {
 async function createAdmin() {
   let admin = await prisma.users.findFirst();
 
+  const hashPassword = await bcrypt.hash("password", 10);
+
   if (!admin) {
     admin = await prisma.users.create({
       data: {
         name: "admin",
         email: "admin@email.com",
-        password: "password",
+        password: hashPassword,
       },
     });
   }

@@ -5,7 +5,7 @@
   "main": "index.js",
   "homepage": "https://github.com/savioferraz/spotsat_back#readme",
   "scripts": {
-    "build": "ttsc -p tsconfig.build.json",
+    "build": "npx tsc",
     "db:dump": "sudo su -c 'pg_dump spotsat --inserts --no-owner' postgres > dump.sql",
     "dev:load-envs": "dotenv -e .env.development",
     "lint": "eslint .",

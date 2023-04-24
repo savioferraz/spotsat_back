@@ -4,6 +4,9 @@ WORKDIR /usr/src/
 
 COPY . .
 
-RUN npm i
+EXPOSE 4000
 
-CMD [ "node", "index.js" ]
+RUN npm i
+RUN npm run build
+
+CMD [ "npm", "start" ]
