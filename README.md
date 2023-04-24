@@ -20,14 +20,14 @@ Você pode testar as rotas da API através de alguma ferramenta como Thunderclie
 
 ## Documentação
 
-### Usuário (/users)
+### Rota Usuário (/users)
 
 | Método | Rota    | Descrição              |
 | ------ | ------- | ---------------------- |
 | POST   | /create | Cria um novo usuário   |
 | POST   | /login  | Faz o login do usuário |
 
-### Polígonos (/shapes)
+### Rota Polígonos (/shapes)
 
 | Método | Rota | Descrição                               |
 | ------ | ---- | --------------------------------------- |
