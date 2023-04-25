@@ -45,6 +45,8 @@ Você pode testar as rotas da API através de alguma ferramenta como Thunderclie
 - PostgreSQL
 - Prisma ORM
 - Bcrypt
+- Jest
+- Docker
 
 ## License
 
